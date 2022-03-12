@@ -155,6 +155,11 @@ const drivers = [
     }
 ];
 
+//For each constructor, loop through the drivers, and add their value to the total team sum.
+//Add them to an array if the value is <= $100M.
+//Once the array hits 5 drivers, exit the loop and repeat the process. 
+//Have validation checks to make sure the same combination of drivers/constructor can't be made
+
 function createTeams() {
     //loop through all possible team combinations
     for (let i = 0; i < 1; i++) {
@@ -170,10 +175,10 @@ function createTeams() {
 
             //loop through each driver
             for (let dCounter = 0; dCounter < drivers.length; dCounter++) {
-                if (teamSum + drivers[dCounter].value < 100 && team.length < 5) {
+                if (teamSum + drivers[dCounter].value < 100 && team.length < 6) {
                     teamSum = teamSum + drivers[dCounter].value;
                     team.push(drivers[dCounter])
-                } else if (team.length >= 5) {
+                } else if (team.length >= 6) {
                     globalTeams.push(team)
                 }
             }
@@ -184,11 +189,6 @@ function createTeams() {
 const button = document.querySelector('#button');
 
 button.addEventListener('click', createTeams())
-
-//For each constructor, loop through the drivers, and add their value to the total team sum.
-//Add them to an array if the value is <= $100M.
-//Once the array hits 5 drivers, exit the loop and repeat the process. 
-//Have validation checks to make sure the same combination of drivers/constructor can't be made
 
 
 
